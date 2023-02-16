@@ -15,6 +15,6 @@ export const configAtom = atom<KubbUserConfig>({
   plugins: [
     ['@kubb/swagger', {}],
     ['@kubb/swagger-typescript', { output: 'models.ts' }],
-    ['@kubb/swagger-react-query', { output: 'hooks.ts' }],
+    ['@kubb/swagger-react-query', { output: 'hooks' }],
   ],
 } as unknown as KubbUserConfig)

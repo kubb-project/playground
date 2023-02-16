@@ -108,7 +108,7 @@ export default function Workspace() {
     if (code) {
       trigger({ input: code, config })
     }
-  }, [code])
+  }, [code, config])
 
   const output = useMemo(() => {
     if (error) {

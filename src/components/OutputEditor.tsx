@@ -75,7 +75,7 @@ export default function OutputEditor({ output, files }: Props) {
     })
     editorRef.current
       .getAction('editor.action.formatDocument')
-      .run()
+      ?.run()
       .then(() => {
         editorRef.current?.updateOptions({
           readOnly: true,

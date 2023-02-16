@@ -66,7 +66,7 @@ const fetchOutput = async (url: string, { arg }) => {
 
   return fetch(url, {
     method: 'POST',
-    body: JSON.stringify({input: arg.input, config: arg.config}),
+    body: JSON.stringify({ input: arg.input, config: arg.config }),
   }).then(async (response) => {
     const json = await response.json()
     if (response.status === 500) {
@@ -105,10 +105,9 @@ export default function Workspace() {
   const [config] = useAtom(configAtom)
 
   useEffect(() => {
-    if(code){
+    if (code) {
       trigger({ input: code, config })
     }
-   
   }, [code])
 
   const output = useMemo(() => {

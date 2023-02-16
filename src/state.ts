@@ -4,7 +4,7 @@ import type { KubbUserConfig } from '@kubb/core'
 
 export const codeAtom = atom('')
 
-export const configAtom = atom<KubbUserConfig<true>>({
+export const configAtom = atom<KubbUserConfig>({
   root: '.',
   input: {
     path: './petStore.yaml',
@@ -13,8 +13,8 @@ export const configAtom = atom<KubbUserConfig<true>>({
     path: 'gen',
   },
   plugins: [
-    ['@kubb/swagger', { }],
+    ['@kubb/swagger', {}],
     ['@kubb/swagger-typescript', { output: 'models.ts' }],
     ['@kubb/swagger-react-query', { output: 'hooks.ts' }],
   ],
-} as unknown as KubbUserConfig<true>)
+} as unknown as KubbUserConfig)

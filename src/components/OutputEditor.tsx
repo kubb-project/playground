@@ -56,6 +56,12 @@ export default function OutputEditor({ output, files }: Props) {
     })
   }, [monaco])
 
+  useEffect(() => {
+    if (!fileName && files?.length) {
+      setFileName(files[0].fileName)
+    }
+  }, [files, fileName])
+
   const outputContent = stringifyOutput(output)
   const editorLanguage = output.err ? 'text' : output.val.language
 

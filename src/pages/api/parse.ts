@@ -33,15 +33,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     if (req.method === 'POST') {
       //! WE NEED TO IMPORT OS BECAUSE ELSE NEXTJS IS NOT INCLUDING OAS INSIDE THE BUNDLE(PRODUCTION BUILD)
+      const body = JSON.parse(req.body)
+      const config = body.config || {
+        root: './',
+        output: {
+          path: 'gen',
+        },
+        plugins: [
+          ['@kubb/swagger', { output: false }],
+          ['@kubb/swagger-typescript', { output: 'models.ts' }],
+          ['@kubb/swagger-react-query', { output: './hooks' }],
+        ],
+      }
+      const mappedPlugins = config.plugins?.map((plugin) => {
+        if (Array.isArray(plugin)) {
+          const [name, options = {}] = plugin as any[]
+
+          if (name === '@kubb/swagger') {
+            return createSwagger(options)
+          }
+          if (name === '@kubb/swagger-typescript') {
+            return createSwaggerTypescript(options)
+          }
+          if (name === '@kubb/swagger-react-query') {
+            return createSwaggerReactQuery(options)
+          }
+        }
+        return plugin
+      })
 
       const result = await build({
         config: {
-          root: './',
-          input: JSON.parse(req.body),
-          output: {
-            path: 'gen',
-          },
-          plugins: [createSwagger({ version: '3' }), createSwaggerTypescript({ output: 'models.ts' }), createSwaggerReactQuery({ output: './hooks' })],
+          ...config,
+          input: body.input,
+          plugins: mappedPlugins,
         },
         mode: 'development',
       })

@@ -13,8 +13,8 @@ export const configAtom = atom<KubbUserConfig<true>>({
     path: 'gen',
   },
   plugins: [
-    ['@kubb/swagger', { version: '3' }],
+    ['@kubb/swagger', { }],
     ['@kubb/swagger-typescript', { output: 'models.ts' }],
-    ['@kubb/swagger-react-query', { output: 'hooks' }],
+    ['@kubb/swagger-react-query', { output: 'hooks.ts' }],
   ],
 } as unknown as KubbUserConfig<true>)

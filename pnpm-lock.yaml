@@ -9,6 +9,7 @@ specifiers:
   '@kubb/swagger': ^0.43.0
   '@kubb/swagger-react-query': ^0.43.0
   '@kubb/swagger-typescript': ^0.43.0
+  '@kubb/swagger-zod': ^0.43.0
   '@monaco-editor/react': ^4.4.6
   '@next/env': ^13.1.6
   '@types/json-schema': ^7.0.11
@@ -55,6 +56,7 @@ dependencies:
   '@kubb/swagger': 0.43.0
   '@kubb/swagger-react-query': 0.43.0
   '@kubb/swagger-typescript': 0.43.0
+  '@kubb/swagger-zod': 0.43.0
   '@monaco-editor/react': 4.4.6_3vguicescx7w3divwtpzvtv5wy
   framer-motion: 9.0.7_biqbaboplfbrettd7655fr4n2y
   jotai: 2.0.2_react@18.2.0
@@ -1517,6 +1519,20 @@ packages:
 
   /@kubb/swagger-typescript/0.43.0:
     resolution: {integrity: sha512-emovDDUAgMdre2/q9ez7kuwUkt8BcRRCbYuyU4OfQ3ho29kOgDXnRZKmvycaDBUNPEvakgse71ueyD884m/bjw==}
+    dependencies:
+      '@kubb/core': 0.43.0
+      '@kubb/swagger': 0.43.0
+      change-case: 4.1.2
+      lodash.get: 4.4.2
+      lodash.uniq: 4.5.0
+      oas: 20.4.0
+    transitivePeerDependencies:
+      - encoding
+      - openapi-types
+    dev: false
+
+  /@kubb/swagger-zod/0.43.0:
+    resolution: {integrity: sha512-hpo+xpf4ykUpIRP+wOD1Ep0pDb0b/NEOw6RCWMFp0RFO+Bd4pxe+Nm0fHRMfNgVqOwn+VjSRuVccxgYFPt01jw==}
     dependencies:
       '@kubb/core': 0.43.0
       '@kubb/swagger': 0.43.0

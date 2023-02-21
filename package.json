@@ -20,6 +20,7 @@
     "@kubb/swagger": "^0.43.0",
     "@kubb/swagger-react-query": "^0.43.0",
     "@kubb/swagger-typescript": "^0.43.0",
+    "@kubb/swagger-zod": "^0.43.0",
     "@monaco-editor/react": "^4.4.6",
     "framer-motion": "^9.0.7",
     "jotai": "^2.0.2",

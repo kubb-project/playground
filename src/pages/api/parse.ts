@@ -1,9 +1,12 @@
 //! WE NEED TO IMPORT OS BECAUSE ELSE NEXTJS IS NOT INCLUDING OAS INSIDE THE BUNDLE(PRODUCTION BUILD)
+import path from 'path'
+
 import oas from 'oas'
 import { format as prettierFormat } from 'prettier'
+import { v4 as uuidv4 } from 'uuid'
 
 import type { File } from '@kubb/core'
-import { build } from '@kubb/core'
+import { build, write, clean } from '@kubb/core'
 import createSwagger from '@kubb/swagger'
 import createSwaggerTypescript from '@kubb/swagger-typescript'
 import createSwaggerReactQuery from '@kubb/swagger-react-query'
@@ -67,14 +70,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return plugin
       })
 
+      const cachePath = path.resolve('.cache', uuidv4())
+
+      await write(body.input, cachePath)
+
       const result = await build({
         config: {
           ...config,
-          input: body.input,
+          input: {
+            path: cachePath,
+          },
           plugins: mappedPlugins,
         },
         mode: 'development',
       })
+
+      await clean(cachePath)
 
       const files = result.files
         .map((file) => {

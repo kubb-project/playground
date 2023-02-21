@@ -36,7 +36,8 @@
     "semver": "^7.3.8",
     "strip-ansi": "^7.0.1",
     "swr": "^2.0.3",
-    "ts-results": "^3.3.0"
+    "ts-results": "^3.3.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@gplane/tsconfig": "^5.0.0",

@@ -7,6 +7,7 @@ import { build } from '@kubb/core'
 import createSwagger from '@kubb/swagger'
 import createSwaggerTypescript from '@kubb/swagger-typescript'
 import createSwaggerReactQuery from '@kubb/swagger-react-query'
+import createSwaggerZod from '@kubb/swagger-zod'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Options } from 'prettier'
@@ -42,6 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         plugins: [
           ['@kubb/swagger', { output: false }],
           ['@kubb/swagger-typescript', { output: 'models.ts' }],
+          ['@kubb/swagger-zod', { output: './zod' }],
           ['@kubb/swagger-react-query', { output: './hooks' }],
         ],
       }
@@ -57,6 +59,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
           if (name === '@kubb/swagger-react-query') {
             return createSwaggerReactQuery(options)
+          }
+          if (name === '@kubb/swagger-zod') {
+            return createSwaggerZod(options)
           }
         }
         return plugin

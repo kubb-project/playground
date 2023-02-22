@@ -15,6 +15,7 @@ import VersionSelect from './VersionSelect'
 import InputEditor from './InputEditor'
 import OutputEditor from './OutputEditor'
 
+import { format } from '../format'
 import { fileNameAtom, versionAtom } from '../kubb'
 import { codeAtom, configAtom } from '../state'
 
@@ -129,7 +130,7 @@ export default function Workspace() {
 
     return {
       val: {
-        code,
+        code: format(code),
         fileName,
         language,
       },

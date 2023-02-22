@@ -35,10 +35,6 @@ interface Props {
 const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   ...sharedEditorOptions,
   readOnly: true,
-  wordWrap: 'on',
-  renderControlCharacters: false,
-  tabSize: 4,
-  autoIndent: 'full',
 }
 
 export default function OutputEditor({ output, files }: Props) {
@@ -64,24 +60,6 @@ export default function OutputEditor({ output, files }: Props) {
 
   const outputContent = stringifyOutput(output)
   const editorLanguage = output.err ? 'text' : output.val.language
-
-  useEffect(() => {
-    if (!editorRef.current) {
-      return
-    }
-
-    editorRef.current?.updateOptions({
-      readOnly: false,
-    })
-    editorRef.current
-      .getAction('editor.action.formatDocument')
-      ?.run()
-      .then(() => {
-        editorRef.current?.updateOptions({
-          readOnly: true,
-        })
-      })
-  }, [editorRef, outputContent])
 
   const handleFileNameChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFileName(event.target.value)

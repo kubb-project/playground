@@ -9,6 +9,8 @@ import createSwaggerTypescript from '@kubb/swagger-typescript'
 import createSwaggerReactQuery from '@kubb/swagger-react-query'
 import createSwaggerZod from '@kubb/swagger-zod'
 
+import { uploadObject } from '../../aws'
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Options } from 'prettier'
 
@@ -35,6 +37,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
       //! WE NEED TO IMPORT OS BECAUSE ELSE NEXTJS IS NOT INCLUDING OAS INSIDE THE BUNDLE(PRODUCTION BUILD)
       const body = JSON.parse(req.body)
+
+      const signedUrl = await uploadObject(body.input)
       const config = body.config || {
         root: './',
         output: {
@@ -70,7 +74,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const result = await build({
         config: {
           ...config,
-          input: body.input,
+          input: {
+            path: signedUrl,
+          },
           plugins: mappedPlugins,
         },
         mode: 'development',

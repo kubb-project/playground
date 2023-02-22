@@ -13,14 +13,15 @@
   "author": "Stijn Van Hulle <stijn@stijnvanhulle.be",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.276.0",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@kubb/core": "^0.43.3",
-    "@kubb/swagger": "^0.43.3",
-    "@kubb/swagger-react-query": "^0.43.3",
-    "@kubb/swagger-typescript": "^0.43.3",
-    "@kubb/swagger-zod": "^0.43.1",
+    "@kubb/core": "^0.44.0",
+    "@kubb/swagger": "^0.44.1",
+    "@kubb/swagger-react-query": "^0.44.1",
+    "@kubb/swagger-typescript": "^0.44.1",
+    "@kubb/swagger-zod": "^0.44.1",
     "@monaco-editor/react": "^4.4.6",
     "framer-motion": "^9.0.7",
     "jotai": "^2.0.2",
@@ -36,7 +37,8 @@
     "semver": "^7.3.8",
     "strip-ansi": "^7.0.1",
     "swr": "^2.0.3",
-    "ts-results": "^3.3.0"
+    "ts-results": "^3.3.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@gplane/tsconfig": "^5.0.0",

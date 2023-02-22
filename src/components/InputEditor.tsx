@@ -152,7 +152,7 @@ export default function InputEditor(_props: Props) {
     <Flex direction="column" gridArea="input" minW={0} minH={0}>
       <Flex justifyContent="space-between" alignItems="center">
         <Heading size="md" mb="8px">
-          Input (JSON)
+          Input (JSON/YAML)
         </Heading>
         <HStack spacing="10px">
           <Button size="xs" leftIcon={<CgFileDocument />} onClick={handleIssueReportClick}>

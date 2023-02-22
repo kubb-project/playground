@@ -77,6 +77,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           input: {
             path: signedUrl,
           },
+          output: {
+            ...config.output,
+            write: false,
+          },
           plugins: mappedPlugins,
         },
         mode: 'development',

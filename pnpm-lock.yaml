@@ -6,11 +6,11 @@ specifiers:
   '@emotion/react': ^11.10.6
   '@emotion/styled': ^11.10.6
   '@gplane/tsconfig': ^5.0.0
-  '@kubb/core': ^0.50.0
-  '@kubb/swagger': ^0.50.0
-  '@kubb/swagger-react-query': ^0.50.0
-  '@kubb/swagger-ts': ^0.50.0
-  '@kubb/swagger-zod': ^0.50.0
+  '@kubb/core': ^0.50.1
+  '@kubb/swagger': ^0.50.1
+  '@kubb/swagger-react-query': ^0.50.1
+  '@kubb/swagger-ts': ^0.50.1
+  '@kubb/swagger-zod': ^0.50.1
   '@monaco-editor/react': ^4.4.6
   '@next/env': ^13.2.0
   '@types/json-schema': ^7.0.11
@@ -56,11 +56,11 @@ dependencies:
   '@chakra-ui/react': 2.5.1_yonkphj6audkqvubop5pvsidvq
   '@emotion/react': 11.10.6_pmekkgnqduwlme35zpnqhenc34
   '@emotion/styled': 11.10.6_oouaibmszuch5k64ms7uxp2aia
-  '@kubb/core': 0.50.0
-  '@kubb/swagger': 0.50.0
-  '@kubb/swagger-react-query': 0.50.0
-  '@kubb/swagger-ts': 0.50.0
-  '@kubb/swagger-zod': 0.50.0
+  '@kubb/core': 0.50.1
+  '@kubb/swagger': 0.50.1
+  '@kubb/swagger-react-query': 0.50.1
+  '@kubb/swagger-ts': 0.50.1
+  '@kubb/swagger-zod': 0.50.1
   '@monaco-editor/react': 4.4.6_3vguicescx7w3divwtpzvtv5wy
   framer-motion: 9.1.6_biqbaboplfbrettd7655fr4n2y
   jotai: 2.0.2_react@18.2.0
@@ -2462,8 +2462,8 @@ packages:
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
     dev: false
 
-  /@kubb/core/0.50.0:
-    resolution: {integrity: sha512-6Nmgsdw9LcdjGIyIAfjd6mcXY22RhVszELz6gs4Nhx2R9T2a+rrlEWYEtQc5oQL4htatzGKifMJcgkPG27dAhw==}
+  /@kubb/core/0.50.1:
+    resolution: {integrity: sha512-q+KIltNMxjbJgugeAjBZsHY96Dp5j1b7Pxws5d0+r9czXvlpV/Jy7Xefk9xh6+6+P23csketFGdT9njofwa9uQ==}
     dependencies:
       change-case: 4.1.2
       directory-tree: 3.5.1
@@ -2474,37 +2474,24 @@ packages:
       uuid: 9.0.0
     dev: false
 
-  /@kubb/swagger-react-query/0.50.0:
-    resolution: {integrity: sha512-9/i9gwGnQA8J8CiV32kunp8eA5SRgoSzKMl7wXbvsoIFeW4XtYvn4NrbYp7stY/XD9cdrpiOM+gQJ7f4sQIDsg==}
+  /@kubb/swagger-react-query/0.50.1:
+    resolution: {integrity: sha512-27njkUhIsjOM3N9eRJXwhfNsuYYPi8O0gNqf00GASoy3Hc6z/NkXxBsaU8pNi0liMkRboKAJg968NwwxjXFhqg==}
     dependencies:
-      '@kubb/core': 0.50.0
-      '@kubb/swagger': 0.50.0
-      '@kubb/swagger-ts': 0.50.0
+      '@kubb/core': 0.50.1
+      '@kubb/swagger': 0.50.1
+      '@kubb/swagger-ts': 0.50.1
       change-case: 4.1.2
     transitivePeerDependencies:
       - encoding
       - openapi-types
     dev: false
 
-  /@kubb/swagger-ts/0.50.0:
-    resolution: {integrity: sha512-fOMj8Fj9N7/UP8vZXAMcFxufKacgIxBRIUL/f4zdOJ/x2YKGOJ8RVVJxiPtux0V7F0/JCc34EDUarAkZsapOfw==}
+  /@kubb/swagger-ts/0.50.1:
+    resolution: {integrity: sha512-G1sLgAbts2X9n5Q6Ls/O9/XZPE7/1Eu/OV9NwZ3N7rt8AgxG1eM+4nlPU2iBC5LU+JJtnGM3QtLZD3qXM7wLMQ==}
     dependencies:
-      '@kubb/core': 0.50.0
-      '@kubb/swagger': 0.50.0
-      '@kubb/ts-codegen': 0.50.0
-      change-case: 4.1.2
-      lodash.uniq: 4.5.0
-    transitivePeerDependencies:
-      - encoding
-      - openapi-types
-    dev: false
-
-  /@kubb/swagger-zod/0.50.0:
-    resolution: {integrity: sha512-RRkQIHFbrl14HZyb57AMS484HVmPHS0+RZLpnA5uqnRCHq3U2eu5Qs5TtwAyPSLlU0vXXTwiQZW/sBqxN5bwDg==}
-    dependencies:
-      '@kubb/core': 0.50.0
-      '@kubb/swagger': 0.50.0
-      '@kubb/ts-codegen': 0.50.0
+      '@kubb/core': 0.50.1
+      '@kubb/swagger': 0.50.1
+      '@kubb/ts-codegen': 0.50.1
       change-case: 4.1.2
       lodash.uniq: 4.5.0
     transitivePeerDependencies:
@@ -2512,11 +2499,24 @@ packages:
       - openapi-types
     dev: false
 
-  /@kubb/swagger/0.50.0:
-    resolution: {integrity: sha512-FoLSxg3vNMQO0CFAUw3VGjX8YraagvEYibjEihShde2OamB51FUBOSgltuU+mP99W/lp3298NBbzX2nC6os61Q==}
+  /@kubb/swagger-zod/0.50.1:
+    resolution: {integrity: sha512-KFxXjx4tvxdKX4WS/MOkvuHJzi8oRkyEUmlTUI0xk+NhtwyPlHV76h+LuP33yelWCLe8t6vtvDfW7U2pigXGGg==}
+    dependencies:
+      '@kubb/core': 0.50.1
+      '@kubb/swagger': 0.50.1
+      '@kubb/ts-codegen': 0.50.1
+      change-case: 4.1.2
+      lodash.uniq: 4.5.0
+    transitivePeerDependencies:
+      - encoding
+      - openapi-types
+    dev: false
+
+  /@kubb/swagger/0.50.1:
+    resolution: {integrity: sha512-1xRakjqpZkBt4p1+XE4REVdyjwsZu4GzC5wKnEUztD2G1OMedQBRby0+9BM4RG7VEvpoi1lOqfeDHiW/j8nb6w==}
     dependencies:
       '@apidevtools/swagger-parser': 10.1.0
-      '@kubb/core': 0.50.0
+      '@kubb/core': 0.50.1
       change-case: 4.1.2
       lodash.get: 4.4.2
       oas: 20.4.0
@@ -2526,10 +2526,10 @@ packages:
       - openapi-types
     dev: false
 
-  /@kubb/ts-codegen/0.50.0:
-    resolution: {integrity: sha512-yqofovBdZP0Fg8Dj+904jiLy3GKsNSNv5p3Y0qkRPF4T8jR9xAVWS9bkmtO6EUkXVA6xVvuPpNMciMdOrR6Apg==}
+  /@kubb/ts-codegen/0.50.1:
+    resolution: {integrity: sha512-0AFn2eva+4TWld7i43RVDudzqSZp6eE8qZ1Dfu0I71T606h1hSZS/BXOUnTdqDTJ738o2P2YWz13plQBRBgRkA==}
     dependencies:
-      '@kubb/core': 0.50.0
+      '@kubb/core': 0.50.1
       typescript: 4.9.5
     dev: false
 

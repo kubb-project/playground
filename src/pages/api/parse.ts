@@ -1,24 +1,18 @@
 //! WE NEED TO IMPORT OS BECAUSE ELSE NEXTJS IS NOT INCLUDING OAS INSIDE THE BUNDLE(PRODUCTION BUILD)
 import oas from 'oas'
 
-import type { File } from '@kubb/core'
 import { build } from '@kubb/core'
 import createSwagger from '@kubb/swagger'
 import createSwaggerTs from '@kubb/swagger-ts'
 import createSwaggerReactQuery from '@kubb/swagger-react-query'
 import createSwaggerZod from '@kubb/swagger-zod'
 
-import { s3Client, uploadObject } from '../../aws'
-
-import type { S3Client } from '@aws-sdk/client-s3'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-//! WE NEED TO IMPORT OAS BECAUSE ELSE NEXTJS IS NOT INCLUDING OAS INSIDE THE BUNDLE(PRODUCTION BUILD)
 console.log(typeof oas)
 
-export const buildKubbFiles = async ({ body }: { body: any }, options: { client: S3Client } = { client: s3Client }) => {
-  const signedUrl = await uploadObject(body.input, options)
-  const config = body.config || {
+export const buildKubbFiles = async (config: any) => {
+  const combinedConfig = config || {
     root: './',
     output: {
       path: 'gen',
@@ -30,7 +24,7 @@ export const buildKubbFiles = async ({ body }: { body: any }, options: { client:
       ['@kubb/swagger-react-query', { output: './hooks' }],
     ],
   }
-  const mappedPlugins = config.plugins?.map((plugin) => {
+  const mappedPlugins = combinedConfig.plugins?.map((plugin) => {
     if (Array.isArray(plugin)) {
       const [name, options = {}] = plugin as any[]
 
@@ -52,12 +46,9 @@ export const buildKubbFiles = async ({ body }: { body: any }, options: { client:
 
   const result = await build({
     config: {
-      ...config,
-      input: {
-        path: signedUrl,
-      },
+      ...combinedConfig,
       output: {
-        ...config.output,
+        ...combinedConfig.output,
         write: false,
       },
       plugins: mappedPlugins,
@@ -66,23 +57,15 @@ export const buildKubbFiles = async ({ body }: { body: any }, options: { client:
   })
 
   return result.files
-    .map((file) => {
-      return { ...file, path: file.path.split('/gen/')[1] }
-    })
-    .filter((file) => file.path)
-    .reduce((acc, file) => {
-      if (!acc.find((item) => item.path === file.path)) {
-        return [...acc, file]
-      }
-      return acc
-    }, [] as File[])
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === 'POST') {
       const { body } = req
-      const files = await buildKubbFiles({ body })
+
+      const files = await buildKubbFiles(body.config)
+
       res.status(200).json(files)
       return
     }

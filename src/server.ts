@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import { S3Client } from '@aws-sdk/client-s3'
 
 import { buildKubbFiles } from './pages/api/parse'
+import { uploadObject } from './aws'
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || 3000
@@ -25,9 +26,18 @@ app
       credentials: { accessKeyId: process.env.ACCESS_KEY!, secretAccessKey: process.env.SECRET_ACCESS_KEY! },
     })
 
+    server.post('/api/upload', async (req, res) => {
+      const { body } = req
+
+      const signedUrl = await uploadObject(body.input, { client: s3Client })
+
+      return res.status(200).json({ url: signedUrl })
+    })
+
     server.post('/api/parse', async (req, res) => {
       const { body } = req
-      const files = await buildKubbFiles({ body }, { client: s3Client })
+
+      const files = await buildKubbFiles(body.config)
 
       return res.status(200).json(files)
     })

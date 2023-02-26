@@ -50,34 +50,57 @@ const Main = styled.main`
 `
 
 const fetchOutput = async (url: string, { arg }) => {
-  // const kubb = globalThis.kubb
-  // const { fileManager } = await kubb.build({
-  //   config: {
-  //     root: './',
-  //     input: arg.code,
-  //     output: {
-  //       path: 'gen',
-  //     },
-  //     plugins: [],
-  //   },
-  //   mode: 'development',
-  // })
-
-  // console.log(fileManager.files)
-
-  return fetch(url, {
+  const file = await fetch(`/api/upload`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ input: arg.input, config: arg.config }),
+    body: JSON.stringify({ input: arg.input }),
   }).then(async (response) => {
     const json = await response.json()
     if (response.status === 500) {
       throw json.error
     }
 
-    return json as File[]
+    return json as { url: string }
+  })
+
+  return fetch(`/api/parse`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      file: file.url,
+      config:
+        arg.config && file.url
+          ? {
+              ...arg.config,
+              input: {
+                path: file.url,
+              },
+            }
+          : arg.config,
+    }),
+  }).then(async (response) => {
+    const json = await response.json()
+    if (response.status === 500) {
+      throw json.error
+    }
+
+    const files: File[] = json
+      .map((file) => {
+        return { ...file, path: file.path.split('/gen/')[1] }
+      })
+      .filter((file) => file.path)
+      .reduce((acc, file) => {
+        if (!acc.find((item) => item.path === file.path)) {
+          return [...acc, file]
+        }
+        return acc
+      }, [] as File[])
+
+    return files
   })
 }
 

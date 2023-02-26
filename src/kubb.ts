@@ -1,5 +1,7 @@
 import { atom } from 'jotai'
 
+import packageJson from '@kubb/core/package.json'
+
 import type { Result } from 'ts-results'
 import type { JSONSchema6 } from 'json-schema'
 
@@ -9,7 +11,7 @@ export interface TransformationOutput {
   language: string
 }
 
-export const versionAtom = atom(new URLSearchParams(window.location.search).get('version') ?? '0.54.0')
+export const versionAtom = atom(new URLSearchParams(window.location.search).get('version') ?? packageJson?.version)
 
 export const fileNameAtom = atom('')
 

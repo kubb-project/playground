@@ -8,7 +8,7 @@ export const s3Client = new S3Client({
   credentials: { accessKeyId: process.env.ACCESS_KEY!, secretAccessKey: process.env.SECRET_ACCESS_KEY! },
 })
 
-export const uploadObject = async (data: any) => {
+export const uploadObject = async (data: any, options: { client: S3Client } = { client: s3Client }) => {
   const date = new Date()
   date.setHours(date.getMinutes() + 5)
   const bucketParams: PutObjectCommandInput = {
@@ -21,7 +21,7 @@ export const uploadObject = async (data: any) => {
 
   try {
     const command = new PutObjectCommand(bucketParams)
-    await s3Client.send(command)
+    await options.client.send(command)
 
     // Create the presigned URL.
     const signedUrl = `https://kubb.s3.eu-west-1.amazonaws.com/${bucketParams.Key}`

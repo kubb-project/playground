@@ -67,6 +67,9 @@ const fetchOutput = async (url: string, { arg }) => {
 
   return fetch(url, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ input: arg.input, config: arg.config }),
   }).then(async (response) => {
     const json = await response.json()

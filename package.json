@@ -7,6 +7,7 @@
     "dev": "next",
     "test": "echo 'not implemented'",
     "start": "next start",
+    "start:node": "cross-env NODE_ENV=production ts-node ./src/server.ts",
     "build": "next build",
     "export": "next export"
   },
@@ -23,6 +24,7 @@
     "@kubb/swagger-ts": "^0.54.0",
     "@kubb/swagger-zod": "^0.54.0",
     "@monaco-editor/react": "^4.4.6",
+    "express": "^4.18.2",
     "framer-motion": "^10.0.0",
     "jotai": "^2.0.2",
     "js-base64": "^3.7.5",
@@ -41,8 +43,10 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@gplane/tsconfig": "^5.0.0",
     "@next/env": "^13.2.1",
+    "@types/express": "^4.17.17",
     "@types/json-schema": "^7.0.11",
     "@types/node": "^18.14.2",
     "@types/pako": "^2.0.0",
@@ -51,6 +55,7 @@
     "@types/semver": "^7.3.13",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.35.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",

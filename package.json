@@ -73,5 +73,9 @@
     "last 3 versions",
     "safari >= 9",
     "ie > 10"
-  ]
+  ],
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7"
+  }
 }

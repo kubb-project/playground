@@ -9,7 +9,7 @@ export interface TransformationOutput {
   language: string
 }
 
-export const versionAtom = atom(new URLSearchParams(window.location.search).get('version') ?? '0.41.0')
+export const versionAtom = atom(new URLSearchParams(window.location.search).get('version') ?? '0.54.0')
 
 export const fileNameAtom = atom('')
 

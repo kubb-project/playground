@@ -53,7 +53,6 @@ export const buildKubbFiles = async (config: any) => {
       },
       plugins: mappedPlugins,
     },
-    mode: 'development',
   })
 
   return result.files

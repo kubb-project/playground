@@ -30,7 +30,7 @@ function getIssueReportUrl({
   config: KubbUserConfig
   playgroundLink: string
 }): string {
-  const reportUrl = new URL(`https://github.com/stijnvanhulle/kubb/issues/new?assignees=&labels=C-bug&template=bug_report.yml`)
+  const reportUrl = new URL(`https://github.com/kubb-project/kubb/issues/new?assignees=&labels=C-bug&template=bug_report.yml`)
 
   reportUrl.searchParams.set('code', code)
   reportUrl.searchParams.set('config', JSON.stringify(config, null, 2))

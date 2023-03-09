@@ -31,7 +31,7 @@ export default function HeaderBar() {
         <Button variant="ghost" onClick={toggleColorMode}>
           {colorMode === 'dark' ? <CgMoon /> : <CgSun />}
         </Button>
-        <Link href="https://github.com/stijnvanhulle/kubb" isExternal display="flex" alignItems="center">
+        <Link href="https://github.com/kubb-project/kubb" isExternal display="flex" alignItems="center">
           GitHub
           <Box display="inline-block" ml="1px">
             <CgExternal />

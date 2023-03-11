@@ -73,9 +73,19 @@ export default function OutputEditor({ output, files }: Props) {
         </Heading>
         <HStack spacing="10px">
           <Select size="xs" id="logLevel" value={fileName} onInput={handleFileNameChange}>
-            {files?.map((file) => {
-              return <option value={file.fileName}>{file.path}</option>
-            })}
+            {files
+              ?.sort((a, b) => {
+                if (a.fileName < b.fileName) {
+                  return -1
+                }
+                if (a.fileName > b.fileName) {
+                  return 1
+                }
+                return 0
+              })
+              ?.map((file) => {
+                return <option value={file.fileName}>{file.path}</option>
+              })}
           </Select>
         </HStack>
       </Flex>
